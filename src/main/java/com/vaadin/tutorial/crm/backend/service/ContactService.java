@@ -30,6 +30,14 @@ public class ContactService {
         return contactRepository.findAll();
     }
 
+    public List<Contact> findAll(String stringFilter) {
+        if (stringFilter == null || stringFilter.isEmpty()) {
+            return contactRepository.findAll();
+        } else {
+            return contactRepository.search(stringFilter);
+        }
+    }
+
     public long count() {
         return contactRepository.count();
     }
@@ -66,7 +74,7 @@ public class ContactService {
                             "Eileen Walker", "Katelyn Martin", "Israel Carlsson", "Quinn Hansson", "Makena Smith",
                             "Danielle Watson", "Leland Harris", "Gunner Karlsen", "Jamar Olsson", "Lara Martin",
                             "Ann Andersson", "Remington Andersson", "Rene Carlsson", "Elvis Olsen", "Solomon Olsen",
-                            "Jaydan Jackson", "Bernard Nilsen")
+                            "Jaydan Jackson", "Bernard Nilsen", "Babu Rajendran", "Shu Yang")
                             .map(name -> {
                                 String[] split = name.split(" ");
                                 Contact contact = new Contact();
